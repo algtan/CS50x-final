@@ -7,27 +7,17 @@ from . import app
 def home():
     return render_template("home.html")
 
-@app.route("/about/")
-def about():
-    return render_template("about.html")
 
-@app.route("/api/data")
-def get_data():
-    return app.send_static_file("data.json")
+@app.route("/amortization/")
+def amortization():
+    return render_template("amortization.html")
+    
 
-@app.route("/contact/")
-def contact():
-    return render_template("contact.html")
+@app.route("/qualification/")
+def qualification():
+    return render_template("qualification.html")
 
-@app.route("/hello/")
-@app.route("/hello/<name>")
-def hello_there(name = None):
-    return render_template(
-        "hello_there.html",
-        name=name,
-        date=datetime.now()
-    )
 
-@app.route("/test/")
-def test():
-    return "This is a test."
+@app.route("/monthly/")
+def monthly():
+    return render_template("monthly.html")
