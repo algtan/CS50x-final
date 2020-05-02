@@ -14,10 +14,20 @@
   </head>
   <body>
     <div class="navbar">
-        <a href="{{ url_for('home') }}" class="navbar-brand">Home</a>
-        <a href="{{ url_for('monthly') }}" class="navbar-item">Monthly Payment</a>
-        <a href="{{ url_for('qualification') }}" class="navbar-item">Loan Qualification</a>
-        <a href="{{ url_for('amortization') }}" class="navbar-item">Amortization Schedule</a>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="{{ 'nav-link active' if active_page == 'monthly' else 'nav-link' }}" href="{{ url_for('monthly') }} ">Monthly Payment</a>
+        </li>
+        <li class="nav-item">
+          <a class="{{ 'nav-link active' if active_page == 'qualificaiton' else 'nav-link' }}" href="{{ url_for('qualification') }} ">Loan Qualification</a>
+        </li>
+        <li class="nav-item">
+          <a class="{{ 'nav-link active' if active_page == 'amortization' else 'nav-link' }}" href="{{ url_for('amortization') }} ">Payment Amortization</a>
+        </li>
+      </ul>
     </div>
 
     <div class="body-content">
