@@ -9,7 +9,69 @@ def home():
 
 @app.route("/amortization/", methods=["GET", "POST"])
 def amortization():
-    return render_template("amortization.html")
+    # If request method is POST
+    if request.method == "POST":
+        # If field is left empty, make the default value zero (.01% for interest rate, 1 year for term)
+        # Home Price
+        if not request.form.get("home_price"):
+            home_price = 0
+        else:
+            home_price = int(request.form.get("home_price"))
+        # Down Payment
+        if not request.form.get("down_pmt"):
+            down_pmt = 0
+        else:
+            down_pmt = int(request.form.get("down_pmt"))
+        # Interest Rate
+        if not request.form.get("int_rate"):
+            int_rate = 0.01
+        else:
+            int_rate = float(request.form.get("int_rate"))
+        # Term
+        if not request.form.get("term"):
+            term = 1
+        else:
+            term = int(request.form.get("term"))
+        
+        # Calculate principal of the loan
+        P = home_price - down_pmt
+        # Calculate the monthly interest rate
+        r = int_rate/100/12
+        # Calculate the number of payments
+        n = term * 12
+
+        # Calculate amortizaiton data
+        monthly_mortgage = P * (r * (1+r)**n) / ((1+r)**n - 1)
+        
+        # Create list of dictionaries for amoritization data
+        rows = []
+        pmt_no = []
+        interest = []
+        principal = []
+        Pr = []
+        
+        # For loop to go through each payment's information
+        for i in range(n):
+            if i == 0:
+                pmt_no.append(1)
+                interest.append(P * r)
+                principal.append(monthly_mortgage - interest[i])
+                Pr.append(P - principal[i])
+            else:
+                pmt_no.append(i + 1)
+                interest.append(Pr[i-1] * r)
+                principal.append(monthly_mortgage - interest[i])
+                Pr.append(Pr[i-1] - principal[i])
+            row = dict(pmt_no = pmt_no[i], interest = interest[i], principal = principal[i], Pr = Pr[i])
+            rows.append(row)
+          
+        # Return the calculated total monthly payment to the user
+        return render_template("amortization.html", home_price = home_price, down_pmt = down_pmt, int_rate = int_rate, term = term,
+                               P_formatted = '${:,.2f}'.format(P), monthly_mortgage = monthly_mortgage, rows = rows)
+
+    # If the user has not submitted the form, present the form to the user
+    else:
+        return render_template("amortization.html")
     
 
 @app.route("/qualification/", methods=["GET", "POST"])
