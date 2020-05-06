@@ -6,17 +6,17 @@
 {% endblock %}
 
 {% block content %}
-    <h3 align="center">You Qualify for a Loan of This Amount: {{ Pq }}</h3>
+    <h3>You Qualify for a Loan of This Amount: {{ Pq }}</h3>
     <br>
 
     <form action="/qualification/" method="post">
 
         <!-- INCOME -->
-        <h4 align="center">Income Information:</h4>
+        <h4>Income Information:</h4>
         <!-- Salary -->
         <div class="form-group row justify-content-center">
-            <label for="salary1" class="col-2 col-form-label offset-sm-1">Salary or Wages</label>
-            <div class="col-md-2">
+            <label for="salary1" class="col-3 col-form-label offset-sm-1">Salary or Wages</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -27,8 +27,8 @@
         </div>
         <!-- Other Salary -->
         <div class="form-group row justify-content-center">
-            <label for="salary2" class="col-2 col-form-label offset-sm-1">Other Salary or Wages</label>
-            <div class="col-md-2">
+            <label for="salary2" class="col-3 col-form-label offset-sm-1">Other Salary or Wages</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -39,8 +39,8 @@
         </div>
         <!-- Additional Income -->
         <div class="form-group row justify-content-center">
-            <label for="add_income" class="col-2 col-form-label offset-sm-1">Additional Income</label>
-            <div class="col-md-2">
+            <label for="add_income" class="col-3 col-form-label offset-sm-1">Additional Income</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -51,11 +51,11 @@
         </div>
 
         <!-- DEBTS -->
-        <h4 align="center">Debts:</h4>
+        <h4>Debts:</h4>
         <!-- Car Loan Payments -->
         <div class="form-group row justify-content-center">
-            <label for="car_loan" class="col-2 col-form-label offset-sm-1">Car Loan Payments</label>
-            <div class="col-md-2">
+            <label for="car_loan" class="col-3 col-form-label offset-sm-1">Car Loan Payments</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -66,8 +66,8 @@
         </div>
         <!-- Credit Card Payments -->
         <div class="form-group row justify-content-center">
-            <label for="cc_pmt" class="col-2 col-form-label offset-sm-1">Credit Card Payments</label>
-            <div class="col-md-2">
+            <label for="cc_pmt" class="col-3 col-form-label offset-sm-1">Credit Card Payments</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -78,8 +78,8 @@
         </div>
         <!-- Other Debts -->
         <div class="form-group row justify-content-center">
-            <label for="other_debt" class="col-2 col-form-label offset-sm-1">Other Debts</label>
-            <div class="col-md-2">
+            <label for="other_debt" class="col-3 col-form-label offset-sm-1">Other Debts</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -90,11 +90,11 @@
         </div>
 
         <!-- Monthly Home Payment Information -->
-        <h4 align="center">Monthly Home Payment Information:</h4>
+        <h4>Monthly Home Payment Information:</h4>
         <!-- Interest Rate -->
         <div class="form-group row justify-content-center">
-            <label for="int_rate" class="col-2 col-form-label offset-sm-1">Interest Rate</label>
-            <div class="col-md-2">
+            <label for="int_rate" class="col-3 col-form-label offset-sm-1">Interest Rate</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <input type="number" class="form-control" id="int_rate" name="int_rate" min="0" step="0.01" value="{{ int_rate }}">
                     <div class="input-group-append">
@@ -105,8 +105,8 @@
         </div>
         <!-- Term (Years) -->
         <div class="form-group row justify-content-center">
-            <label for="term" class="col-2 col-form-label offset-sm-1">Term (Years)</label>
-            <div class="col-md-2">
+            <label for="term" class="col-3 col-form-label offset-sm-1">Term (Years)</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <input type="number" class="form-control" id="term" name="term" min="0" value="{{ term }}">
                 </div>
@@ -114,8 +114,8 @@
         </div>
         <!-- HOA Dues -->
         <div class="form-group row justify-content-center">
-            <label for="hoa" class="col-2 col-form-label offset-sm-1">HOA Dues</label>
-            <div class="col-md-2">
+            <label for="hoa" class="col-3 col-form-label offset-sm-1">HOA Dues</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -126,8 +126,8 @@
         </div>
         <!-- Mello-roos -->
         <div class="form-group row justify-content-center">
-            <label for="melloroos" class="col-2 col-form-label offset-sm-1">Mello-roos</label>
-            <div class="col-md-2">
+            <label for="melloroos" class="col-3 col-form-label offset-sm-1">Mello-roos</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -138,8 +138,8 @@
         </div>
         <!-- Property Tax (Yearly) -->
         <div class="form-group row justify-content-center">
-            <label for="prop_tax" class="col-2 col-form-label offset-sm-1">Property Tax (Yearly)</label>
-            <div class="col-md-2">
+            <label for="prop_tax" class="col-3 col-form-label offset-sm-1">Property Tax (Yearly)</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -150,8 +150,8 @@
         </div>
         <!-- Insurance (Yearly) -->
         <div class="form-group row justify-content-center">
-            <label for="ins" class="col-2 col-form-label offset-sm-1">Insurance (Yearly)</label>
-            <div class="col-md-2">
+            <label for="ins" class="col-3 col-form-label offset-sm-1">Insurance (Yearly)</label>
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>

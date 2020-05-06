@@ -9,11 +9,11 @@
     <form action="/amortization/" method="post">
 
         <!-- LOAN INFORMATION -->
-        <h4 align="center">Loan Information:</h4>
+        <h4>Loan Information:</h4>
         <!-- Home Price -->
         <div class="form-group row justify-content-center">
             <label for="home_price" class="col-2 col-form-label offset-sm-1">Home Price</label>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -25,7 +25,7 @@
         <!-- Down Payment -->
         <div class="form-group row justify-content-center">
             <label for="down_pmt" class="col-2 col-form-label offset-sm-1">Down Payment</label>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -37,7 +37,7 @@
         <!-- Interest Rate -->
         <div class="form-group row justify-content-center">
             <label for="int_rate" class="col-2 col-form-label offset-sm-1">Interest Rate</label>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="input-group">
                     <input type="number" class="form-control" id="int_rate" name="int_rate" min="0" step="0.01" value="{{ int_rate }}">
                     <div class="input-group-append">
@@ -49,7 +49,7 @@
         <!-- Term (Years) -->
         <div class="form-group row justify-content-center">
             <label for="term" class="col-2 col-form-label offset-sm-1">Term (Years)</label>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="input-group">
                     <input type="number" class="form-control" id="term" name="term" min="0" value="{{ term }}">
                 </div>
@@ -64,9 +64,9 @@
     <br>
 
     <h3>Amortizaiton Schedule</h3>
-    <p>Starting Balance: {{ P_formatted }}</p>
+    <h4>Starting Balance: {{ P_formatted }}</h4>
 
-    <table>
+    <table class = "table table-striped">
         <thead>
             <tr>
                 <th>Payment #</th>
@@ -77,13 +77,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for row in rows %}
+            {% for row in rows_formatted %}
             <tr>
                 <td>{{ row["pmt_no"] }}</td>
-                <td>{{ "$%.2f"|format(monthly_mortgage) }}</td>
-                <td>{{ "$%.2f"|format(row["interest"]) }}</td>
-                <td>{{ "$%.2f"|format(row["principal"]) }}</td>
-                <td>{{ "$%.2f"|format(row["Pr"]) }}</td>
+                <td>{{ monthly_mortgage_formatted }}</td>
+                <td>{{ row["interest"] }}</td>
+                <td>{{ row["principal"] }}</td>
+                <td>{{ row["Pr"] }}</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -43,7 +43,7 @@ def amortization():
         # Calculate amortizaiton data
         monthly_mortgage = P * (r * (1+r)**n) / ((1+r)**n - 1)
         
-        # Create list of dictionaries for amoritization data
+        # Create list of dictionaries for amortization data
         rows = []
         pmt_no = []
         interest = []
@@ -64,10 +64,20 @@ def amortization():
                 Pr.append(Pr[i-1] - principal[i])
             row = dict(pmt_no = pmt_no[i], interest = interest[i], principal = principal[i], Pr = Pr[i])
             rows.append(row)
+
+        # Format the amortization data into currency with commas
+        rows_formatted = []
+        for row in rows:
+            interest = '${:,.2f}'.format(row["interest"])
+            principal = '${:,.2f}'.format(row["principal"])
+            Pr = '${:,.2f}'.format(row["Pr"])
+            row_formatted = dict(pmt_no = row["pmt_no"], interest = interest, principal = principal, Pr = Pr)
+            rows_formatted.append(row_formatted)
           
         # Return the calculated total monthly payment to the user
         return render_template("amortization.html", home_price = home_price, down_pmt = down_pmt, int_rate = int_rate, term = term,
-                               P_formatted = '${:,.2f}'.format(P), monthly_mortgage = monthly_mortgage, rows = rows)
+                               P_formatted = '${:,.2f}'.format(P), monthly_mortgage_formatted = '${:,.2f}'.format(monthly_mortgage),
+                               rows_formatted = rows_formatted)
 
     # If the user has not submitted the form, present the form to the user
     else:
